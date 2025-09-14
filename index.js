@@ -42,6 +42,17 @@ app.get("/hunt", async (req, res) => {
   }
 });
 
+// API: Lấy danh sách top programs
+app.get("/top-programs", async (req, res) => {
+  try {
+    const { data, error } = await supabase.from("top_programs").select("*");
+    if (error) throw error;
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ✅ Route gốc
 app.get("/", (req, res) => {
   res.send("🚀 API Server is running!");
