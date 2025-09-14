@@ -25,6 +25,16 @@ app.get("/hunt", async (req, res) => {
   if (error) return res.status(500).json({ error: error.message });
   res.json(data);
 });
+// ✅ Route gốc
+app.get("/", (req, res) => {
+  res.send("🚀 API Server is running!");
+});
+
+// Server chạy port do Render cấp, local mặc định 4000
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running at http://localhost:${PORT}`);
+});
 
 // Server chạy port do Render cấp, local mặc định 4000
 const PORT = process.env.PORT || 4000;
