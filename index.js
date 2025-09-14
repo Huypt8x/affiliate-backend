@@ -6,7 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 dotenv.config();
 
 const app = express();
-app.use(cors()); // Cho phép frontend gọi API
+app.use(cors()); 
 app.use(express.json());
 
 // Kết nối Supabase
@@ -42,22 +42,12 @@ app.get("/hunt", async (req, res) => {
   }
 });
 
-// Root check
-app.get("/", (req, res) => {
-  res.send("🚀 API Server is running!");
-});
 // ✅ Route gốc
 app.get("/", (req, res) => {
   res.send("🚀 API Server is running!");
 });
 
-// Server chạy port do Render cấp, local mặc định 4000
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
-});
-
-// Server chạy port do Render cấp, local mặc định 4000
+// ✅ Chạy server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
